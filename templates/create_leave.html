@@ -1,0 +1,59 @@
+{% extends './base.html' %} {% block content %}
+<div class="row justify-content-center ">
+    <div class="col-9 ">
+        <div class="card shadow mb-4 mt-3">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-dark">Create New Leave</h6>
+            </div>
+            <div class="card-body pl-5">
+                <form method="POST">
+                    {% csrf_token %} 
+
+                        {% for group_for in request.user.groups.all %}
+                            
+                            {% if group_for.name == 'HR' %}
+                                {{form.as_p}}
+
+                            {% elif group_for.name == 'Employee'%}
+                               
+                                {%for i in form%}
+                                    <input type="hidden" name='employee' value="{{request.user.id}}">    
+                                    <p>
+                                    {%if i.label != 'Employee' %}
+                                        {{i.label}} 
+                                        {{i}}      
+                                    </p>
+                                    
+                                
+                                
+                                {% endif %}                 
+
+                                {%endfor%}
+                            {% endif %}
+                    {% endfor %}
+
+
+
+                        
+
+
+
+
+                    {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                         {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <div class="text-center py-4">
+                        <button type="submit" class="btn btn-outline-primary btn-lg ">Create</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

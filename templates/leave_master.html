@@ -1,0 +1,48 @@
+{% extends './base.html' %} {% block content %}
+
+<div class="row justify-content-center" style="margin-top: 100px;">
+    <div class="col-10 ">
+        <a href="{% url 'add_leave' %}" class="btn btn-lg btn-success text-gray-800 mr-3 mb-2">Add new leave</a></h1>
+    </div>
+</div>
+<div class="row justify-content-center ">
+    <div class="col-10 ">
+        <div class="card shadow mb-4 mt-3"></div>
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Leave Master</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Leave Type</th>
+                            <th>Leave value</th>
+                            <!-- <th></th> -->
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                       
+                    </tfoot>
+                    <tbody>
+                        {% for i in leaves %}
+                        <tr>
+                            <td>{{i.leave_type}}</td>
+                            <td>{{i.leave_value}}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <!-- <a class="btn btn-primary" href="">Show</a> -->
+                                    <!-- <a class="btn btn-success" >Edit</a>  -->
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

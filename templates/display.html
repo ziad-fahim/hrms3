@@ -1,0 +1,29 @@
+{% extends './base.html' %} {% block content %}
+
+<div class="row justify-content-center" style="margin-top: 100px;">
+    <div class="col-10 ">
+       
+    </div>
+</div>
+<div class="row justify-content-center ">
+    <div class="col-10 ">
+        <div class="card shadow mb-4 mt-3"></div>
+        <div class="card-header py-3">
+            
+        </div>
+        <div class="card-body">
+            <p>Employee : {{display.employee}} </p>
+            <p>Leave Type : {{display.leave_type}} </p>
+            <p>Start Date : {{display.leave_start}} </p>
+            <p>End Date : {{display.leave_end}} </p>
+            <p>Resume Date : {{display.resume_date}} </p>
+            <p>Reason : {{display.leave_reason}} </p>
+        </div>
+                        {% if display.Status == 'WAITING FOR APPROVE'   %}
+                                     <a class="btn btn-primary" href="{% url 'accept' pk=display.id%}">Accept</a>
+                                   <a class="btn btn-primary" href="{% url 'reject' pk=display.id%}">Reject</a>
+                                    {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}

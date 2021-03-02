@@ -1,0 +1,62 @@
+{% extends './base.html' %} {% block content %}
+<div class="row justify-content-center ">
+    <div class="col-12 ">
+        <div class="card shadow mb-4 mt-3">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-dark">Create Contract</h6>
+            </div>
+            <div class="card-body pl-5">
+                <form method="POST">
+                    {% csrf_token %} 
+                     
+
+
+                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        {%for i in form%}
+                        <tr>
+                         {%if forloop.first%}   
+                        {%for j in i%}
+
+
+                            <th>{{j.label}}</th>
+
+                         {%endfor%}
+                          {%endif%}  
+                        </tr>
+                         {%endfor%}
+
+                    </thead>
+                    <tfoot>
+                       
+                    </tfoot>
+                    <tbody>
+                        {{form.management_form}}
+                        {%for i in form%}
+                        <tr>
+                           {%for j in i%}
+
+                            <td>{{j}}</td>
+                            {%endfor%}
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+
+
+
+                    
+                    
+                    <div class="text-center py-4">
+                        <button type="submit" class="btn btn-outline-primary btn-lg ">Create</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
